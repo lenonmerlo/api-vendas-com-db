@@ -1,0 +1,20 @@
+# 🛑 Ignorar dependências do Node.js
+node_modules/
+package-lock.json
+
+# 🛑 Ignorar arquivos de log
+logs/
+*.log
+
+# 🛑 Ignorar variáveis de ambiente
+.env
+
+# 🛑 Ignorar cache e builds
+.cache/
+dist/
+build/
+
+# 🛑 Ignorar IDEs e editores de código
+.vscode/
+.idea/
+*.DS_Store
