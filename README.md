@@ -19,6 +19,97 @@ A API conta com **autenticação JWT**, **documentação Swagger** e **testes au
 - **Winston** → Logs
 - **Dotenv** → Gerenciamento de variáveis de ambiente
 
+## 📌 📂 Estrutura de Pastas do Projeto Backend
+```pgsql
+06-api-com-db-particionado/  ← 📂 Diretório raiz do projeto
+│── node_modules/            ← 📂 Dependências do Node.js (não versionado)
+│── src/                     ← 📂 Código-fonte principal
+│   ├── config/              ← 📂 Configurações (Swagger, Logger, Banco de Dados)
+│   │   ├── swagger.js       ← Configuração do Swagger UI
+│   │
+│   ├── controllers/         ← 📂 Controladores (Lógica das rotas)
+│   │   ├── auth-controller.js      ← Lida com autenticação (login, registro)
+│   │   ├── customers-controller.js ← Gerencia clientes
+│   │   ├── orders-controller.js    ← Gerencia pedidos
+│   │   ├── products-controller.js  ← Gerencia produtos
+│   │
+│   ├── database/            ← 📂 Configuração do banco de dados
+│   │   ├── index.js         ← Conexão com PostgreSQL
+│   │   ├── sync-database.js ← Script para sincronizar o banco
+│   │
+│   ├── middlewares/         ← 📂 Middlewares (Autenticação, Validação e Erros)
+│   │   ├── auth.js          ← Middleware para autenticação JWT
+│   │   ├── errorHandler.js  ← Middleware global de tratamento de erros
+│   │   ├── validate.js      ← Middleware para validação de inputs
+│   │
+│   ├── repositories/        ← 📂 Repositórios (Acesso ao Banco de Dados)
+│   │   ├── auth-repository.js      ← Acesso aos dados de autenticação
+│   │   ├── customers-repository.js ← Acesso aos dados de clientes
+│   │   ├── orders-repository.js    ← Acesso aos dados de pedidos
+│   │   ├── products-repository.js  ← Acesso aos dados de produtos
+│   │
+│   ├── routes/              ← 📂 Rotas da API (Definição de Endpoints)
+│   │   ├── auth.js          ← Rotas de autenticação (Login, Registro)
+│   │   ├── customers.js     ← Rotas de clientes (CRUD)
+│   │   ├── orders.js        ← Rotas de pedidos (CRUD)
+│   │   ├── products.js      ← Rotas de produtos (CRUD)
+│   │
+│   ├── services/            ← 📂 Serviços (Regras de Negócio)
+│   │   ├── auth-service.js      ← Lógica de autenticação e geração de tokens
+│   │   ├── customers-service.js ← Regras de clientes
+│   │   ├── orders-service.js    ← Regras de pedidos
+│   │   ├── products-service.js  ← Regras de produtos
+│   │
+│   ├── tests/               ← 📂 Testes Automatizados (Jest + Supertest)
+│   │   ├── auth.test.js          ← Testes para autenticação
+│   │   ├── customers.test.js      ← Testes para clientes
+│   │   ├── order.test.js          ← Testes para pedidos
+│   │   ├── products.test.js       ← Testes para produtos
+│   │
+│   ├── utils/               ← 📂 Utilitários (Funções auxiliares)
+│   │   ├── jwt.js           ← Funções para geração e verificação de tokens JWT
+│   │
+│   ├── validators/          ← 📂 Validações (Joi)
+│   │   ├── authValidator.js  ← Validação dos inputs de autenticação
+│   │   ├── orderValidator.js ← Validação dos inputs de pedidos
+│   │
+│   ├── router.js            ← Carrega todas as rotas da API
+│   ├── server.js            ← Ponto de entrada da API (Express)
+│
+│── .env                     ← Variáveis de ambiente (Banco, JWT Secret)
+│── .gitignore               ← Ignorar arquivos desnecessários no Git
+│── jest.config.js           ← Configuração dos testes (Jest)
+│── LICENSE                  ← Licença MIT do projeto
+│── package.json             ← Dependências e scripts do projeto
+│── package-lock.json        ← Versões exatas das dependências
+```
+
+## 📌 Explicação da Arquitetura
+
+✅ controllers/ → Controladores que recebem as requisições e chamam os serviços.
+
+✅ services/ → Contém a lógica de negócios da aplicação.
+
+✅ repositories/ → Responsáveis por acessar e manipular dados no banco.
+
+✅ middlewares/ → Funções intermediárias como autenticação, erros e validação.
+
+✅ routes/ → Define os endpoints da API e conecta aos controllers.
+
+✅ validators/ → Faz a validação de inputs usando Joi.
+
+✅ tests/ → Contém testes automatizados com Jest e Supertest.
+
+✅ utils/ → Funções auxiliares, como manipulação de tokens JWT.
+
+✅ database/ → Configuração e sincronização do PostgreSQL.
+
+✅ config/ → Configurações do projeto, como Swagger e Logger.
+
+✅ server.js → Arquivo principal que inicia o servidor Express.
+
+
+
 ---
 
 ## 📌 Como Rodar a API 🚀
